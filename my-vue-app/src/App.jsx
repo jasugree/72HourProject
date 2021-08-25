@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import './App.css'
-import Nasa from './components/NASA/Nasa'
-import OpenWeather from './components/OpenWeather/OpenWeather'
-import TicketMaster from './components/TicketMaster/TicketMaster'
-
+import React, { useState } from "react";
+import "./App.css";
+import Nasa from "./components/NASA/Nasa";
+import OpenWeather from "./components/OpenWeather/OpenWeather";
+import TicketMaster from "./components/TicketMaster/TicketMaster";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -15,7 +14,7 @@ function App() {
       <OpenWeather />
       <TicketMaster />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
