@@ -55,7 +55,7 @@ const [icon, seticon] = useState();
   return ( 
     <div className="weatherApp">
       <h2>OpenWeather API</h2>
-      <img className="weatherIcon" src={`https://openweathermap.org/img/w/${icon}.png`} alt="icon" />
+      <img className="weatherIcon" src={`https://openweathermap.org/img/wn/${icon}.png`} alt="icon" />
             <br />
       <p> The temperature is: <span className="temperature">{temperature} °{symbol}</span></p>
       <button className="weatherButton" onClick={unitChange}>Change Unit</button>
