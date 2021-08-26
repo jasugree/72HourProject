@@ -19,10 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello, World</h1>
-      <Nasa coordinates={coordinates}/> {/*PASSING COORDINATES STATE TO NASA CHILD*/}
-      <OpenWeather />
-      <TicketMaster />
+        <h1>Hello, World</h1>
+        <Nasa coordinates={coordinates}/> {/*PASSING COORDINATES STATE TO NASA CHILD*/}
+        <OpenWeather coordinates={coordinates} />
+        <TicketMaster coordinates={coordinates} />
     </div>
   );
 }
