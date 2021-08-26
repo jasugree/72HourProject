@@ -20,10 +20,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello, World</h1>
-      <Nasa coordinates={coordinates}/> {/*PASSING COORDINATES STATE TO NASA CHILD*/}
-      <OpenWeather />
-      <TicketMaster />
+      {coordinates.lat && coordinates.lon ?(<div> 
+        <h1>Hello, World</h1>
+        <Nasa coordinates={coordinates}/> {/*PASSING COORDINATES STATE TO NASA CHILD*/}
+        <OpenWeather coordinates={coordinates} />
+        <TicketMaster />
+      </div>): null}
     </div>
   )
 }
