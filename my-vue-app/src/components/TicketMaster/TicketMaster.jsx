@@ -1,25 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const TicketMaster = (props) => {
-  const tmURL = `https://app.ticketmaster.com/discovery/v2/events.json?=`;
+  const tmURL = `https://app.ticketmaster.com/discovery/v2/events/.json?=`;
   const tmApiKey = `z9FbfmWQ9JpgGduaGIdTGJ4olsaOvkLb`;
 
   const [eventList, setEventList] = useState("");
 
   const fetchTmURL = async () => {
-    const response = await fetch(`${tmURL}${tmApiKey}`, {
-      mode: "no-cors",
-      method: "POST",
-    });
+    const response = await fetch(`${tmURL}${tmApiKey}`);
     const tmData = await response.json();
 
     setEventList(tmData.value);
-    console.log;
+    console.log(tmData);
   };
 
   function handleClick() {
     fetchTmURL();
   }
+
+  //uef
+  useEffect(() => {}, []);
 
   return (
     <div>
