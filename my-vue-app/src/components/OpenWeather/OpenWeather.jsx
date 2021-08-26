@@ -28,22 +28,25 @@ const [icon, seticon] = useState("50d");
   }
   
   const handleCoordinates = () =>{
-    seturl(`${baseURL}?lat=${lat}&lon=${lon}&appid=${key}&units=imperial` )
+    seturl(`${baseURL}?lat=${lat}&lon=${lon}&appid=${key}&units=${measurement}` )
     console.log('OpenWeather URL set')
   }
   
   useEffect (handleCoordinates, [props.coordinates])
   useEffect(fetchResults, [url])
 
-  // useEffect(() => {
-  //   fetchResults();  
-  // },[]);
-  
   const unitChange = () =>{
-    console.log(({temperature} - 32) * 5 / 9) 
+    console.log(measurement)
+    if(measurement === 'metric'){
+      measurement = 'imperial'
+      symbol = "F";
+    } else if(measurement === 'imperial'){
+      measurement = 'metric'
+      symbol = "C";
+    }else{
+      console.log('nothing happened')
     }
-    unitChange();
-
+  }
   
   return ( 
     <div className="weatherApp">
