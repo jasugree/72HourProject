@@ -28,8 +28,8 @@ function App() {
       <h1>Hello, World</h1>
       <Nasa coordinates={coordinates} />{" "}
       {/*PASSING COORDINATES STATE TO NASA CHILD*/}
-      <OpenWeather />
-      <TicketMaster />
+      <OpenWeather coordinates={coordinates} />
+      <TicketMaster coordinates={coordinates} />
     </div>
   );
 }
