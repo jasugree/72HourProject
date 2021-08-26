@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 const key = '4e3b2fbc699bc6dfe7707088a630fb92';
 const city =  'Westfield'
-const state = 'Indiana'
+const state = 'US-IN'
 
 let measurement = 'imperial'
 
@@ -12,13 +12,8 @@ let symbol = "F";
 
 const OpenWeather = (props) => {
 
-
-
 const [temperature, settemperature] = useState("");
 const [icon, seticon] = useState();
-
-
-
 
 
   const fetchResults = async() => {
