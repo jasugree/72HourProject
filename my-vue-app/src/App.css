@@ -76,6 +76,7 @@ button {
 	padding: 15px;
 	border-radius: 500px;
 	border: 1px solid #3d3d3d25;
+	background: rgba(135, 206, 250, 0.25);
 }
 
 .temperature {
