@@ -3,35 +3,21 @@ import React, { useState, useEffect } from 'react';
 
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 const key = '4e3b2fbc699bc6dfe7707088a630fb92';
-const city =  'Westfield'
-const state = 'US-IN'
 
 let measurement = 'imperial'
 
 let symbol = "F";
 
-
 const OpenWeather = (props) => {
-  
+const {lat, lon} = props.coordinates 
 
-
+const [url, seturl] = useState("");
 const [temperature, settemperature] = useState("");
-const [icon, seticon] = useState();
-
-
-const  success = (pos) => {
-  const lat = pos.coords.latitude
-  const lon = pos.coords.longitude
-  console.log(lat + " " +lon)
-}
-
-navigator.geolocation.getCurrentPosition(success)
-
+const [icon, seticon] = useState("50d");
 
   const fetchResults = async() => {
-
+    if (!lat || !lon) return
     
-    let url = `${baseURL}?q=${city},${state}&appid=${key}&units=${measurement}`;  
     const response = await fetch(url)
     const data = await response.json()
 
@@ -41,24 +27,23 @@ navigator.geolocation.getCurrentPosition(success)
     seticon(data.weather[0].icon)
   }
   
+  const handleCoordinates = () =>{
+    seturl(`${baseURL}?lat=${lat}&lon=${lon}&appid=${key}&units=imperial` )
+    console.log('OpenWeather URL set')
+  }
+  
+  useEffect (handleCoordinates, [props.coordinates])
+  useEffect(fetchResults, [url])
 
-  useEffect(() => {
-    fetchResults();  
-  },[]);
+  // useEffect(() => {
+  //   fetchResults();  
+  // },[]);
   
   const unitChange = () =>{
-    console.log('This button got clicked')
-    if(measurement === 'metric'){
-      measurement = 'imperial'
-      symbol = "F";
-    } else if(measurement === 'imperial'){
-      measurement = 'metric'
-      symbol = "C";
-    }else{
-      console.log('nothing happened')
+    console.log(({temperature} - 32) * 5 / 9) 
     }
-    fetchResults();  
-  }
+    unitChange();
+
   
   return ( 
     <div className="weatherApp">

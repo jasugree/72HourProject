@@ -19,12 +19,10 @@ function App() {
 
   return (
     <div className="App">
-      {coordinates.lat && coordinates.lon ?(<div> 
         <h1>Hello, World</h1>
         <Nasa coordinates={coordinates}/> {/*PASSING COORDINATES STATE TO NASA CHILD*/}
         <OpenWeather coordinates={coordinates} />
-        <TicketMaster />
-      </div>): null}
+        <TicketMaster coordinates={coordinates} />
     </div>
   );
 }

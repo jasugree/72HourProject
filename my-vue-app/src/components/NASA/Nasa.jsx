@@ -9,12 +9,6 @@ const Nasa = props => {
   const [url, setUrl] = useState('')
   const [nasaPhoto, setNasaPhoto] = useState(null)
 
-// JAKE's DATE FIX <3
-const newDate = new Date()
-const year = newDate.getFullYear()
-const month = newDate.getMonth() + 1
-const date = newDate.getDate()
-
   const fetchFromNasa = async () => {
     console.log('Checking for coordinates')
     if (!lat || !lon) return // I THINK HAD TO ADD THIS LINE I THINK B/C OF STRING INTERPOLATION IN handleCoordinates()
