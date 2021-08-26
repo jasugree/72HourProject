@@ -5,12 +5,22 @@ import OpenWeather from "./components/OpenWeather/OpenWeather";
 import TicketMaster from "./components/TicketMaster/TicketMaster";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [coordinates, setCoordinates] = useState({})
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition( // THIS JS METHOD ASKS CLIENT FOR PERMISSION TO USE POSITION
+      position => {                           // TAKES A CALLBACK
+      console.log(position)                   // LOG POSITION SO WE CAN SEE WHAT WE ARE WORKING WITH
+      setCoordinates({ lat: position.coords.latitude, lon: position.coords.longitude }) // SET STATE OBJECT 'coordinates'... { coordinates.lat } and { coordinates.lon } 
+    })
+  }
+
+  useEffect(getLocation, []) // RUN getLocation() WHEN App.js mounts
 
   return (
     <div className="App">
       <h1>Hello, World</h1>
-      <Nasa />
+      <Nasa coordinates={coordinates}/> {/*PASSING COORDINATES STATE TO NASA CHILD*/}
       <OpenWeather />
       <TicketMaster />
     </div>
