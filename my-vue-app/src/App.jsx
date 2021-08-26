@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import './App.css'
-import Nasa from './components/NASA/Nasa'
-import OpenWeather from './components/OpenWeather/OpenWeather'
-import TicketMaster from './components/TicketMaster/TicketMaster'
-
+import React, { useState } from "react";
+import "./App.css";
+import Nasa from "./components/NASA/Nasa";
+import OpenWeather from "./components/OpenWeather/OpenWeather";
+import TicketMaster from "./components/TicketMaster/TicketMaster";
 
 function App() {
   const [coordinates, setCoordinates] = useState({})
@@ -27,7 +26,7 @@ function App() {
         <TicketMaster />
       </div>): null}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
