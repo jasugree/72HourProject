@@ -7,10 +7,14 @@ const TicketMaster = (props) => {
   const [eventList, setEventList] = useState("");
 
   const fetchTmURL = async () => {
-    const response = await fetch(`${tmURL}${tmApiKey}`);
+    const response = await fetch(`${tmURL}${tmApiKey}`, {
+      mode: "no-cors",
+      method: "POST",
+    });
     const tmData = await response.json();
 
     setEventList(tmData.value);
+    console.log;
   };
 
   function handleClick() {
