@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const TicketMaster = (props) => {
   const { lat, lon } = props.coordinates;
-
+  console.log(props.coordinates);
   const tmURL = `https://app.ticketmaster.com/discovery/v2/events/.json?latlong=${lat},${lon}&`;
   const tmApiKey = `z9FbfmWQ9JpgGduaGIdTGJ4olsaOvkLb`;
 
