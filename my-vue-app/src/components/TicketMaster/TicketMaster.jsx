@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const TicketMaster = (props) => {
-  const tmURL = `https://app.ticketmaster.com/discovery/v2/events/.json?=`;
+  const { lat, lon } = props.coordinates;
+
+  const tmURL = `https://app.ticketmaster.com/discovery/v2/events/.json?latlong=${lat},${lon}&`;
   const tmApiKey = `z9FbfmWQ9JpgGduaGIdTGJ4olsaOvkLb`;
 
   const [eventList, setEventList] = useState("");
