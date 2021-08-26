@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Nasa from "./components/NASA/Nasa";
 import OpenWeather from "./components/OpenWeather/OpenWeather";
