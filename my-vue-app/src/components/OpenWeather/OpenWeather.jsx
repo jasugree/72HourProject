@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import loading from './assets/loading.gif'
 
-
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 const key = '4e3b2fbc699bc6dfe7707088a630fb92';
 

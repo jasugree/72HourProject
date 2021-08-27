@@ -1,4 +1,4 @@
-const todaysDate = (date) => {
+const todaysDate = () => {
   let today = new Date()
   today.setDate(today.getDate() - 5)
   today = today.toLocaleDateString().split('/')

@@ -10,9 +10,9 @@ const Nasa = props => {
   const [nasaPhoto, setNasaPhoto] = useState(null)
 
   const fetchFromNasa = async () => {
-    console.log('Checking for coordinates')
+    // console.log('Checking for coordinates')
     if (!lat || !lon) return // I THINK HAD TO ADD THIS LINE I THINK B/C OF STRING INTERPOLATION IN handleCoordinates()
-    console.log('Fetching from Nasa')
+    // console.log('Fetching from Nasa')
 
     const res = await fetch(url + apiKey)
     const blob = await res.blob()
@@ -23,9 +23,9 @@ const Nasa = props => {
 
   const handleCoordinates = () => {
     setUrl(
-      `https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${todaysDate()}&dim=.03&api_key=`
+      `https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${todaysDate()}&dim=.05&api_key=`
     )
-    console.log('Set the URL')
+    // console.log('Set the URL')
   }
 
   useEffect(handleCoordinates, [props.coordinates])
