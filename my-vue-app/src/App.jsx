@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, useEffect} from "react";
-=======
-import React, { useState, useEffect } from "react";
->>>>>>> e328b675d7016287fee47f807f6f0015cd04f056
 import "./App.css";
 import Nasa from "./components/NASA/Nasa";
 import OpenWeather from "./components/OpenWeather/OpenWeather";
