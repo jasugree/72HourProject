@@ -51,6 +51,7 @@ const TicketMaster = (props) => {
     <div className="ticketApp">
       <h1>Ticket Master - Events Nearby!</h1>
       <hr />
+      <div className="eventTable">
       <Table striped>
         <thead>
           <tr>
@@ -62,6 +63,7 @@ const TicketMaster = (props) => {
         </thead>
         <tbody>{eventList ? tmEventMapper() : null}</tbody>
       </Table>
+      </div>
     </div>
   );
 };
