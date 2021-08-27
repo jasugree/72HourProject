@@ -49,7 +49,7 @@ const [isImperial, setIsImperial] = useState(true);
   return ( 
     <div className="weatherApp">
       <h2>OpenWeather API</h2>
-      <img style={{maxWidth : 30}}className="weatherIcon" src={icon ? `https://openweathermap.org/img/wn/${icon}.png` : loading} alt="icon" />
+      <img style={{maxWidth : 75}}className="weatherIcon" src={icon ? `https://openweathermap.org/img/wn/${icon}.png` : loading} alt="icon" />
             <br />
       <p> The temperature is: <span className="temperature">{Math.round(temperature)} °{isImperial ? "F" : "C"}</span></p>
       <button className="weatherButton" onClick={unitToggle }>Change Unit</button>
