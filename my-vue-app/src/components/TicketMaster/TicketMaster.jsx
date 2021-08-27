@@ -29,7 +29,7 @@ const TicketMaster = (props) => {
       `https://app.ticketmaster.com/discovery/v2/events.json?latlong=${lat},${lon}&apikey=${tmApiKey}`
     );
   }
-  //uef
+
   useEffect(handlePropsChange, [props.coordinates]);
 
   useEffect(fetchTmURL, [url]);
@@ -41,7 +41,8 @@ const TicketMaster = (props) => {
           {/* <th scope="row">{event.id}</th> */}
           <td>{event.name}</td>
           <td>{event.type}</td>
-          <td>{event.url}</td>
+          <td>{event.dates.start.localDate}</td>
+          <td>{event.distance} mi.</td>
         </tr>
       );
     });
@@ -57,7 +58,8 @@ const TicketMaster = (props) => {
             {/* <th>id:</th> */}
             <th>name:</th>
             <th>type:</th>
-            <th>link:</th>
+            <th>date:</th>
+            <th>distance:</th>
           </tr>
         </thead>
         <tbody>{eventList ? tmEventMapper() : null}</tbody>
