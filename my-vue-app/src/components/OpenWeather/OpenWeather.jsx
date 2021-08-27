@@ -13,6 +13,8 @@ const OpenWeather = (props) => {
   const [temperature, settemperature] = useState("");
   const [icon, seticon] = useState(null);
   const [isImperial, setIsImperial] = useState(true);
+  const [city, setcity] = useState("");
+  const [description, setdescription] = useState("");
 
   const fetchResults = async () => {
     if (!lat || !lon) return;
@@ -22,7 +24,10 @@ const OpenWeather = (props) => {
       const data = await response.json();
 
       console.log(data);
+      console.log(data.name);
 
+      setdescription(data.weather[0].description)
+      setcity(data.name);
       settemperature(data.main.temp);
       seticon(data.weather[0].icon);
     } catch (err) {
@@ -52,10 +57,13 @@ const OpenWeather = (props) => {
 
   return (
     <div className="weatherApp">
-      <h2>OpenWeather API</h2>
-      <img style={{maxWidth : 75}}className="weatherIcon" src={icon ? `https://openweathermap.org/img/wn/${icon}.png` : loading} alt="icon" />
-            <br />
-      <p> The temperature is: <span className="temperature">{Math.round(temperature)} °{isImperial ? "F" : "C"}</span></p>
+      <h2>{city}</h2>
+      <p>{description}</p>
+      <div className="temp">
+        <img style={{maxWidth : 75}}className="weatherIcon" src={icon ? `https://openweathermap.org/img/wn/${icon}.png` : loading} alt="icon" />
+        <span className="temperature">{Math.round(temperature)} °{isImperial ? "F" : "C"}</span>
+      </div>
+      <br />
       <button className="weatherButton" onClick={unitToggle }>Change Unit</button>
 
 

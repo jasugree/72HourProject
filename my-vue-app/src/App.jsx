@@ -3,6 +3,7 @@ import "./App.css";
 import Nasa from "./components/NASA/Nasa";
 import OpenWeather from "./components/OpenWeather/OpenWeather";
 import TicketMaster from "./components/TicketMaster/TicketMaster";
+import { Container, Row, Col } from 'reactstrap';
 
 function App() {
   const [coordinates, setCoordinates] = useState({});
@@ -25,11 +26,21 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hello, World</h1>
-      <Nasa coordinates={coordinates} />{" "}
-      {/*PASSING COORDINATES STATE TO NASA CHILD*/}
-      <OpenWeather coordinates={coordinates} />
-      <TicketMaster coordinates={coordinates} />
+      <Container>
+        <Row>
+          <h1 className="greeting">Good Evening</h1>
+        </Row>
+        <Row>
+          <Col className="col-4">
+            <OpenWeather coordinates={coordinates} />
+           {/*PASSING COORDINATES STATE TO NASA CHILD*/}
+            <Nasa coordinates={coordinates} />{" "}
+          </Col>
+          <Col className="events col-8">
+            <TicketMaster coordinates={coordinates} />
+          </Col>
+          </Row>
+      </Container>
     </div>
   );
 }
