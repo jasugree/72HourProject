@@ -4,7 +4,6 @@ import Nasa from "./components/NASA/Nasa";
 import OpenWeather from "./components/OpenWeather/OpenWeather";
 import TicketMaster from "./components/TicketMaster/TicketMaster";
 
-
 function App() {
   const [coordinates, setCoordinates] = useState({});
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Table } from "reactstrap";
 
 const TicketMaster = (props) => {
   const { lat, lon } = props.coordinates;
@@ -10,16 +11,18 @@ const TicketMaster = (props) => {
 
   const fetchTmURL = async () => {
     if (!lat || !lon) return;
-    const response = await fetch(url);
-    const tmData = await response.json();
 
-    setEventList(tmData._embedded.events);
-    console.log(tmData._embedded.events);
+    try {
+      const response = await fetch(url);
+      const tmData = await response.json();
+
+      setEventList(tmData._embedded.events);
+      console.log(tmData._embedded.events);
+    } catch (err) {
+      // catches errors both in fetch and response.json
+      alert(err);
+    }
   };
-
-  // function handleClick() {
-  //   fetchTmURL();
-  // }
 
   function handlePropsChange() {
     setUrl(
@@ -31,11 +34,34 @@ const TicketMaster = (props) => {
 
   useEffect(fetchTmURL, [url]);
 
+  const tmEventMapper = () => {
+    return eventList.map((event) => {
+      return (
+        <tr key={event.id}>
+          {/* <th scope="row">{event.id}</th> */}
+          <td>{event.name}</td>
+          <td>{event.type}</td>
+          <td>{event.url}</td>
+        </tr>
+      );
+    });
+  };
+
   return (
-    <div>
+    <div className="ticketApp">
       <h1>Ticket Master - Events Nearby!</h1>
-      {/* <p>{eventList}</p> */}
-      {/* <button onClick={handleClick}>Click for nearby events</button> */}
+      <hr />
+      <Table striped>
+        <thead>
+          <tr>
+            {/* <th>id:</th> */}
+            <th>name:</th>
+            <th>type:</th>
+            <th>link:</th>
+          </tr>
+        </thead>
+        <tbody>{eventList ? tmEventMapper() : null}</tbody>
+      </Table>
     </div>
   );
 };
