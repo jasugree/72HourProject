@@ -1,44 +1,70 @@
 import React, { useState, useEffect } from "react"
-import todaysDate from "../../helpers/todaysDate"
+import fiveDaysAgo from "../../helpers/fiveDaysAgo"
+import "./Nasa.css"
+import loading from '../OpenWeather/assets/loading.gif'
 
-const Nasa = props => {
+const Nasa = (props) => {
   const { lat, lon } = props.coordinates
 
   const apiKey = "qwOijB0BlWxLDopTggwefGV4GwqvhBJ1nlbFRw5M"
 
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState("")
   const [nasaPhoto, setNasaPhoto] = useState(null)
 
   const fetchFromNasa = async () => {
     // console.log('Checking for coordinates')
     if (!lat || !lon) return // I THINK HAD TO ADD THIS LINE I THINK B/C OF STRING INTERPOLATION IN handleCoordinates()
     // console.log('Fetching from Nasa')
+    try {
+      const res = await fetch(url + apiKey)
+      const blob = await res.blob()
 
-    const res = await fetch(url + apiKey)
-    const blob = await res.blob()
+      setNasaPhoto(URL.createObjectURL(blob))
+    } catch (err) {
+      console.error(
+        "Uh oh... There seems to be an error. Luckily the dev added this catch so the page should still work!"
+      )
+    }
+  }
 
+  const fetchRevGeo = async () => {
+    if (!lat || !lon) return
 
-    setNasaPhoto(URL.createObjectURL(blob))
+    try {
+      const res = await fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+      )
+      const json = await res.json()
+      console.log("REVERSE GEO:", json)
+      document.title = json.city + " Events"
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   const handleCoordinates = () => {
     setUrl(
-      `https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${todaysDate()}&dim=.05&api_key=`
+      `https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${fiveDaysAgo()}&dim=.03&api_key=`
     )
     // console.log('Set the URL')
   }
 
   useEffect(handleCoordinates, [props.coordinates])
+  useEffect(fetchRevGeo, [props.coordinates])
   useEffect(fetchFromNasa, [url])
 
   return (
-    <div style={{display: 'flex', flexFlow: 'column wrap', alignItems: 'center'}}>
-      <div>Nasa</div>
+    <div className="nasaApp">
+
       {nasaPhoto ? (
-        <img src={nasaPhoto} alt="" style={{ height: 200 }} />
+        <div className='nasa-image-container'>
+          <h2>You Are Here</h2>
+          <p className='nasa-pin' title='YOU ARE HERE'>📌</p>
+          <img src={nasaPhoto} alt="" className="nasa-image" />
+        </div>
       ) : (
-        <div style={{height: 200, width: 200, backgroundColor: 'grey'}}>
-          <p>Loading...</p>
+        <div className="nasa-loading">
+          <img src={loading} alt="" className='nasa-loading-gif'/>
         </div>
       )}
     </div>

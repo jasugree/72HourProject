@@ -1,4 +1,4 @@
-const todaysDate = () => {
+const fiveDaysAgo = () => {
   let today = new Date()
   today.setDate(today.getDate() - 5)
   today = today.toLocaleDateString().split('/')
@@ -7,4 +7,4 @@ const todaysDate = () => {
   return [today[2],today[0],today[1]].join('-')
 }
 
-export default todaysDate
+export default fiveDaysAgo
