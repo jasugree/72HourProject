@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect } from 'react';
+import loading from './assets/loading.gif'
 
 const baseURL = "https://api.openweathermap.org/data/2.5/weather";
 const key = "4e3b2fbc699bc6dfe7707088a630fb92";
 
-let measurement = "imperial";
-
-let symbol = "F";
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
+const key = '4e3b2fbc699bc6dfe7707088a630fb92';
 
 const OpenWeather = (props) => {
   const { lat, lon } = props.coordinates;
 
-  const [url, seturl] = useState("");
-  const [temperature, settemperature] = useState("");
-  const [icon, seticon] = useState("50d");
+const [url, seturl] = useState("");
+const [temperature, settemperature] = useState("");
+const [icon, seticon] = useState(null);
+const [isImperial, setIsImperial] = useState(true);
 
   const fetchResults = async () => {
     if (!lat || !lon) return;
@@ -33,31 +35,22 @@ const OpenWeather = (props) => {
 
   useEffect(handleCoordinates, [props.coordinates]);
   useEffect(fetchResults, [url]);
-
-  const unitChange = () => {
-    console.log((({ temperature } - 32) * 5) / 9);
-  };
-  unitChange();
+  
+  const unitToggle = () =>{
+    if(isImperial) {
+      settemperature((temperature - 32) * 5 / 9)
+    }else{ settemperature(temperature * 9 / 5  + 32)}
+      setIsImperial(!isImperial);
+    }
 
   return (
     <div className="weatherApp">
       <h2>OpenWeather API</h2>
-      <img
-        className="weatherIcon"
-        src={`https://openweathermap.org/img/wn/${icon}.png`}
-        alt="icon"
-      />
-      <br />
-      <p>
-        {" "}
-        The temperature is:{" "}
-        <span className="temperature">
-          {temperature} °{symbol}
-        </span>
-      </p>
-      <button className="weatherButton" onClick={unitChange}>
-        Change Unit
-      </button>
+
+      <img style={{maxWidth : 30}}className="weatherIcon" src={icon ? `https://openweathermap.org/img/wn/${icon}.png` : loading} alt="icon" />
+            <br />
+      <p> The temperature is: <span className="temperature">{Math.round(temperature)} °{isImperial ? "F" : "C"}</span></p>
+      <button className="weatherButton" onClick={unitToggle }>Change Unit</button>
     </div>
   );
 };
