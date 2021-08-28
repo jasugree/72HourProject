@@ -36,7 +36,7 @@ const Nasa = (props) => {
       )
       const json = await res.json()
       console.log("REVERSE GEO:", json)
-      document.title = json.city + " Events"
+      document.title = (json.city ? json.city : json.locality) + " Events"
     } catch (err) {
       console.error(err)
     }
