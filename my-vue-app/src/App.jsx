@@ -4,6 +4,7 @@ import Nasa from "./components/NASA/Nasa";
 import OpenWeather from "./components/OpenWeather/OpenWeather";
 import TicketMaster from "./components/TicketMaster/TicketMaster";
 import { Container, Row, Col } from 'reactstrap';
+import day from "./components/assets/day.jpg"
 
 function App() {
   const [coordinates, setCoordinates] = useState({});
@@ -24,11 +25,33 @@ function App() {
 
   useEffect(getLocation, []); // RUN getLocation() WHEN App.js mounts
 
+//Greeting Function
+let today = new Date()
+let curHr = today.getHours()
+
+let greeting = "Hello there"
+let image = "blue"
+
+console.log(curHr);
+
+if (curHr < 12) {
+  greeting ='Good Morning'
+  image = {day}
+} else if (curHr < 18) {
+  greeting = 'Good Afternoon'
+  image = 'green'
+} else {
+  greeting = 'Good Evening'
+  image = 'green'
+}
+
   return (
-    <div className="App">
+    <div className="App" style={{ 
+      background: `${image}` 
+    }}>
       <Container>
         <Row>
-          <h1 className="greeting">Good Evening</h1>
+          <h1 className="greeting">{greeting}</h1>
         </Row>
         <Row>
           <Col className="col-4">
