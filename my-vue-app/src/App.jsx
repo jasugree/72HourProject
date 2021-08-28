@@ -5,6 +5,10 @@ import OpenWeather from "./components/OpenWeather/OpenWeather";
 import TicketMaster from "./components/TicketMaster/TicketMaster";
 import { Container, Row, Col } from 'reactstrap';
 import day from "./components/assets/day.jpg"
+import evening from "./components/assets/evening.jpg"
+import morning from "./components/assets/morning.jpg"
+import night from "./components/assets/night.jpg"
+
 
 function App() {
   const [coordinates, setCoordinates] = useState({});
@@ -34,20 +38,25 @@ let image = "blue"
 
 console.log(curHr);
 
-if (curHr < 12) {
+
+ 
+if (curHr >22 || curHr < 6){
+  greeting = 'Good Night'
+  image = night
+}else if (curHr < 12) {
   greeting ='Good Morning'
-  image = {day}
+  image = morning
 } else if (curHr < 18) {
   greeting = 'Good Afternoon'
-  image = 'green'
+  image = day
 } else {
   greeting = 'Good Evening'
-  image = 'green'
+  image = evening
 }
 
   return (
     <div className="App" style={{ 
-      background: `${image}` 
+      background: `linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)), url(${image})`  
     }}>
       <Container>
         <Row>
