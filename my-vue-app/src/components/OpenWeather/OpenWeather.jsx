@@ -61,7 +61,7 @@ const OpenWeather = (props) => {
       <p>{description}</p>
       <div className="temp">
         <img style={{maxWidth : 75}}className="weatherIcon" src={icon ? `https://openweathermap.org/img/wn/${icon}.png` : loading} alt="icon" />
-        <span className="temperature">{Math.round(temperature)} °{isImperial ? "F" : "C"}</span>
+        <p className="temperature">{Math.round(temperature)} °{isImperial ? "F" : "C"}</p>
       </div>
       <br />
       <button className="weatherButton" onClick={unitToggle }>Change Unit</button>

@@ -49,7 +49,7 @@ const TicketMaster = (props) => {
 
   return (
     <div className="ticketApp">
-      <h1>Ticket Master - Events Nearby!</h1>
+      <h2>Ticket Master - Events Nearby!</h2>
       <hr />
       <div className="eventTable">
         <Table striped>
