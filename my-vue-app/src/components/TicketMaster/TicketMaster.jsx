@@ -4,7 +4,6 @@ import { Table, Button } from "reactstrap";
 const TicketMaster = (props) => {
   const { lat, lon } = props.coordinates;
   const [url, setUrl] = useState("");
-  console.log(props.coordinates);
   const tmApiKey = `z9FbfmWQ9JpgGduaGIdTGJ4olsaOvkLb`;
 
   const [eventList, setEventList] = useState("");
@@ -17,7 +16,6 @@ const TicketMaster = (props) => {
       const tmData = await response.json();
 
       setEventList(tmData._embedded.events);
-      console.log(tmData._embedded.events);
     } catch (err) {
       // catches errors both in fetch and response.json
       alert(err);

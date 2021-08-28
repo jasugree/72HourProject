@@ -23,9 +23,6 @@ const OpenWeather = (props) => {
       const response = await fetch(url);
       const data = await response.json();
 
-      console.log(data);
-      console.log(data.name);
-
       setdescription(data.weather[0].description)
       setcity(data.name);
       settemperature(data.main.temp);
@@ -40,7 +37,6 @@ const OpenWeather = (props) => {
 
   const handleCoordinates = () => {
     seturl(`${baseURL}?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`);
-    console.log("OpenWeather URL set");
   };
 
   useEffect(handleCoordinates, [props.coordinates]);

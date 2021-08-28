@@ -18,7 +18,6 @@ function App() {
       // THIS JS METHOD ASKS CLIENT FOR PERMISSION TO USE POSITION
       (position) => {
         // TAKES A CALLBACK
-        console.log(position); // LOG POSITION SO WE CAN SEE WHAT WE ARE WORKING WITH
         setCoordinates({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
@@ -35,10 +34,6 @@ let curHr = today.getHours()
 
 let greeting = "Hello there"
 let image = "blue"
-
-console.log(curHr);
-
-
  
 if (curHr >22 || curHr < 6){
   greeting = 'Good Night'

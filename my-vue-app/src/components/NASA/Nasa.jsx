@@ -12,9 +12,7 @@ const Nasa = (props) => {
   const [nasaPhoto, setNasaPhoto] = useState(null);
 
   const fetchFromNasa = async () => {
-    // console.log('Checking for coordinates')
     if (!lat || !lon) return; // I THINK HAD TO ADD THIS LINE I THINK B/C OF STRING INTERPOLATION IN handleCoordinates()
-    // console.log('Fetching from Nasa')
     try {
       const res = await fetch(url + apiKey);
       const blob = await res.blob();
@@ -35,7 +33,6 @@ const Nasa = (props) => {
         `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
       );
       const json = await res.json();
-      console.log("REVERSE GEO:", json);
       document.title = (json.city ? json.city : json.locality) + " Events";
     } catch (err) {
       console.error(err);
@@ -46,7 +43,6 @@ const Nasa = (props) => {
     setUrl(
       `https://api.nasa.gov/planetary/earth/imagery?lon=${lon}&lat=${lat}&date=${fiveDaysAgo()}&dim=.03&api_key=`
     );
-    // console.log('Set the URL')
   };
 
   useEffect(handleCoordinates, [props.coordinates]);
