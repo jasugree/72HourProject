@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import fiveDaysAgo from "../../helpers/fiveDaysAgo"
-import "./Nasa.css"
+import fiveDaysAgo from "../../helpers/fiveDaysAgo" //function that returns date for query
 import loading from '../OpenWeather/assets/loading.gif'
+import "./Nasa.css"
 
 const Nasa = (props) => {
   const { lat, lon } = props.coordinates
