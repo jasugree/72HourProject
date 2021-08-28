@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 
 const TicketMaster = (props) => {
   const { lat, lon } = props.coordinates;
@@ -29,7 +29,7 @@ const TicketMaster = (props) => {
       `https://app.ticketmaster.com/discovery/v2/events.json?latlong=${lat},${lon}&apikey=${tmApiKey}`
     );
   }
-  //uef
+
   useEffect(handlePropsChange, [props.coordinates]);
 
   useEffect(fetchTmURL, [url]);
@@ -38,10 +38,10 @@ const TicketMaster = (props) => {
     return eventList.map((event) => {
       return (
         <tr key={event.id}>
-          {/* <th scope="row">{event.id}</th> */}
           <td>{event.name}</td>
           <td>{event.type}</td>
-          <td>{event.url}</td>
+          <td>{event.dates.start.localDate}</td>
+          <td>{event.distance} mi.</td>
         </tr>
       );
     });
@@ -51,17 +51,19 @@ const TicketMaster = (props) => {
     <div className="ticketApp">
       <h1>Ticket Master - Events Nearby!</h1>
       <hr />
-      <Table striped>
-        <thead>
-          <tr>
-            {/* <th>id:</th> */}
-            <th>name:</th>
-            <th>type:</th>
-            <th>link:</th>
-          </tr>
-        </thead>
-        <tbody>{eventList ? tmEventMapper() : null}</tbody>
-      </Table>
+      <div className="eventTable">
+        <Table striped>
+          <thead>
+            <tr>
+              <th>name:</th>
+              <th>type:</th>
+              <th>date:</th>
+              <th>distance:</th>
+            </tr>
+          </thead>
+          <tbody>{eventList ? tmEventMapper() : null}</tbody>
+        </Table>
+      </div>
     </div>
   );
 };
