@@ -1,3 +1,17 @@
+* {
+	font-family: "Ubuntu", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: calc(10px + 2vmin);
+	font-family: "Fira Sans", sans-serif;
+}
+
 .App {
 	text-align: center;
 	height: 100vh;
@@ -100,9 +114,9 @@ button {
 }
 
 .eventTable {
-  background-color: #f3f3f3;
-  max-height: 578px;
-  overflow-y: scroll;
+	background-color: #f3f3f3;
+	max-height: 600px;
+	overflow-y: scroll;
 }
 .ticketApp {
   background-color: rgba(255, 255, 255, 0.75);
@@ -128,4 +142,11 @@ h1.greeting:after {
   width: 150px;
   margin-top: 10px;
   margin-bottom: 30px;
+}
+
+/*Mobile Break*/
+@media only screen and (max-width: 1200px) {
+	.ticketApp {
+		margin-bottom: 20px;
+	}
 }

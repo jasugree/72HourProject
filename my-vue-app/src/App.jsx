@@ -63,12 +63,12 @@ if (curHr >22 || curHr < 6){
           <h1 className="greeting">{greeting}</h1>
         </Row>
         <Row>
-          <Col className="col-4">
+          <Col className="col-xl-4 order-xl-1 col-lg-12 order-sm-2 order-2">
             <OpenWeather coordinates={coordinates} />
            {/*PASSING COORDINATES STATE TO NASA CHILD*/}
             <Nasa coordinates={coordinates} />{" "}
           </Col>
-          <Col className="events col-8">
+          <Col className="events col-xl-8 order-xl-2 col-md-12 ordersm-1 order-1">
             <TicketMaster coordinates={coordinates} />
           </Col>
           </Row>
