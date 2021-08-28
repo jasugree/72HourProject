@@ -35,36 +35,40 @@ const TicketMaster = (props) => {
   useEffect(fetchTmURL, [url]);
 
   const tmEventMapper = () => {
-    return eventList.map((event) => {
-      return (
-        <tr key={event.id}>
-          <td>{event.name}</td>
-          <td>{event.type}</td>
-          <td>{event.dates.start.localDate}</td>
-          <td>{event.distance} mi.</td>
-          <td>
-            <a href={event.url} target="_blank" rel="noopener noreferrer">
-              <Button color="primary">Purchase Tickets</Button>
-            </a>
-          </td>
-        </tr>
-      );
-    });
+    return eventList
+      .sort((a, b) => (a.distance > b.distance ? 1 : -1))
+      .map((event) => {
+        return (
+          <tr key={event.id}>
+            <td>{event.name}</td>
+            <td>
+              {new Date(event.dates.start.localDate).toLocaleDateString()}
+            </td>
+            <td>{event.distance} mi.</td>
+            <td>
+              <a href={event.url} target="_blank" rel="noopener noreferrer">
+                <button className="weatherButton ticketButton">
+                  Purchase Tickets
+                </button>
+              </a>
+            </td>
+          </tr>
+        );
+      });
   };
 
   return (
     <div className="ticketApp">
-      <h1>Ticket Master - Events Nearby!</h1>
+      <h2>Ticket Master - Events Nearby!</h2>
       <hr />
       <div className="eventTable">
         <Table striped>
           <thead>
             <tr>
-              <th>name:</th>
-              <th>type:</th>
-              <th>date:</th>
-              <th>distance:</th>
-              <th>link:</th>
+              <th>Name:</th>
+              <th>Date:</th>
+              <th>Distance:</th>
+              <th>Link:</th>
             </tr>
           </thead>
           <tbody>{eventList ? tmEventMapper() : null}</tbody>
