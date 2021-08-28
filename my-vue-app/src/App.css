@@ -1,42 +1,157 @@
+* {
+	font-family: "Ubuntu", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: calc(10px + 2vmin);
+	font-family: "Fira Sans", sans-serif;
+}
+
 .App {
-  text-align: center;
+	text-align: center;
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover !important;
+	background-attachment: fixed !important;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+	height: 40vmin;
+	pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 button {
-  font-size: calc(10px + 2vmin);
+	font-size: calc(10px + 2vmin);
+}
+
+/*Jake's Styles*/
+.weatherApp {
+	background-color: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(3px);
+	margin: auto;
+	border-radius: 10px;
+	padding: 50px;
+	margin-bottom: 25px;
+}
+
+.weatherButton {
+	color: white;
+	border-radius: 300px;
+	border: none;
+	font-size: 1.2em;
+	padding: 0.25em 2em 0.5em 2em;
+	background: rgba(30, 143, 255, 0.753);
+	transition: all 0.25s ease-in-out;
+	box-shadow: rgba(17, 12, 46, 0.15) 0px 8px 10px 0px;
+}
+
+.ticketButton {
+	font-size: 0.75em;
+	font-weight: bold;
+	padding: 0.25em 1em;
+}
+
+.weatherButton:hover {
+	background: rgb(141, 157, 179);
+	cursor: pointer;
+}
+
+.weatherButton:active {
+	transform: scale(0.9);
+	box-shadow: rgba(17, 12, 46, 0) 0px 0px 0px 0px;
+}
+
+.weatherIcon {
+	padding: 15px;
+	border-radius: 500px;
+	border: 1px solid #3d3d3d25;
+	background: transparent;
+}
+
+.temperature {
+	font-weight: 200;
+	font-size: 3em;
+	margin-left: 20px;
+}
+.temp {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.eventTable {
+	background-color: #f3f3f3;
+	max-height: 600px;
+	overflow-y: scroll;
+}
+.ticketApp {
+	background-color: rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(3px);
+	margin: auto;
+	border-radius: 10px;
+	border: 1px solid #3d3d3d25;
+	padding: 20px;
+}
+.container {
+	padding-top: 5em;
+}
+
+h1.greeting {
+	color: white;
+	text-align: left;
+}
+
+h1.greeting:after {
+	content: " ";
+	display: block;
+	border: 4px solid white;
+	width: 150px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+
+/*Mobile Break*/
+@media only screen and (max-width: 1200px) {
+	.ticketApp {
+		margin-bottom: 20px;
+	}
+
+	.App {
+		height: 130vh;
+	}
 }
