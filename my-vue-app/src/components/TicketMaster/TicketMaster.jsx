@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 
 const TicketMaster = (props) => {
   const { lat, lon } = props.coordinates;
@@ -38,7 +38,6 @@ const TicketMaster = (props) => {
     return eventList.map((event) => {
       return (
         <tr key={event.id}>
-          {/* <th scope="row">{event.id}</th> */}
           <td>{event.name}</td>
           <td>{event.type}</td>
           <td>{event.dates.start.localDate}</td>
@@ -53,18 +52,17 @@ const TicketMaster = (props) => {
       <h1>Ticket Master - Events Nearby!</h1>
       <hr />
       <div className="eventTable">
-      <Table striped>
-        <thead>
-          <tr>
-            {/* <th>id:</th> */}
-            <th>name:</th>
-            <th>type:</th>
-            <th>date:</th>
-            <th>distance:</th>
-          </tr>
-        </thead>
-        <tbody>{eventList ? tmEventMapper() : null}</tbody>
-      </Table>
+        <Table striped>
+          <thead>
+            <tr>
+              <th>name:</th>
+              <th>type:</th>
+              <th>date:</th>
+              <th>distance:</th>
+            </tr>
+          </thead>
+          <tbody>{eventList ? tmEventMapper() : null}</tbody>
+        </Table>
       </div>
     </div>
   );
